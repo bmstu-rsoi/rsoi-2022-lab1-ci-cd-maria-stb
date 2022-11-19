@@ -34,7 +34,7 @@ COPY . .
 RUN python manage.py makemigrations && python manage.py migrate
 
 # run gunicorn  Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX. It's a pre-fork worker model.
-CMD gunicorn Lab1Rsoi.wsgi:application --bind 0.0.0.0:8000
+CMD gunicorn Lab1Rsoi.wsgi:application --bind 0.0.0.0:$PATH
 
 
 #COPY requirements.txt /app/requirements.txt
