@@ -23,9 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 env = environ.Env()
 environ.Env.read_env()
 
-SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
-ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
+SECRET_KEY = 'django-insecure-&c7#mqg^#jfoe0+##syq)^$#%ri^91(bv+96v6b93t_7@vel*e'
+DEBUG = True
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+# SECRET_KEY = env('SECRET_KEY')
+# DEBUG = env('DEBUG')
+# ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
