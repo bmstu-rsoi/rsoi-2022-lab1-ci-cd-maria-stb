@@ -1,9 +1,6 @@
 FROM python:3.11.0-alpine3.15
 
-ENV PYTHONDONTWRITEBYTECODE 1
-#Prevents Python from buffering stdout and stderr
-ENV PYTHONUNBUFFERED 1
-ENV DEBUG 0
+#ENV DEBUG 0
 
 #install psycopg2
 RUN apk update \
@@ -34,7 +31,7 @@ COPY . .
 RUN python manage.py makemigrations && python manage.py migrate
 
 # run gunicorn  Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX. It's a pre-fork worker model.
-CMD gunicorn Lab1Rsoi.wsgi:application --bind 0.0.0.0:$PATH
+CMD gunicorn Lab1Rsoi.wsgi:application --bind 0.0.0.0:8000
 
 
 #COPY requirements.txt /app/requirements.txt
