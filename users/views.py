@@ -9,7 +9,7 @@ class PersonView(ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
     permission_classes = [AllowAny]
-    lookup_field = 'id'
+    # lookup_field = 'id'
 
     # def update(self, request, id, format=None):
     #     print(request)
