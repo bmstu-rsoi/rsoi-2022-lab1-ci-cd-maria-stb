@@ -19,3 +19,4 @@ class PersonAPIViewAll(ListCreateAPIView):
 class PersonAPIViewDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = PersonSerializer
     queryset = Person.objects.all()
+    
