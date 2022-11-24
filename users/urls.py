@@ -1,7 +1,8 @@
-from rest_framework.routers import SimpleRouter
+from django.urls import path
 
-from users.views import PersonView
+from .views import PersonAPIViewAll, PersonAPIViewDetail
 
-router = SimpleRouter()
-router.register(r'persons', PersonView)
-urlpatterns = router.urls
+urlpatterns = [
+    path("persons", PersonAPIViewAll.as_view()),
+    path("persons/<int:pk>", PersonAPIViewDetail.as_view())
+]

@@ -1,17 +1,24 @@
-from rest_framework.permissions import AllowAny
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.renderers import JSONRenderer
+from rest_framework.settings import api_settings
 
-from users.models import Person
-from users.serializers import PersonSerializer
+from .serializers import PersonSerializer
+from .models import Person
 
 
-class PersonView(ModelViewSet):
-    queryset = Person.objects.all()
+class PersonAPIViewAll(ListCreateAPIView):
     serializer_class = PersonSerializer
-    permission_classes = [AllowAny]
-    # lookup_field = 'id'
+    queryset = Person.objects.all()
+    renderer_classes = [JSONRenderer]
 
-    # def update(self, request, id, format=None):
-    #     print(request)
-    #     print("id",id)
-    #     return {}
+    def get_success_headers(self, data):
+        try:
+            return {'Location': str(data[api_settings.URL_FIELD_NAME])}
+        except (TypeError, KeyError):
+            return {'Location': f"/{data.get('id', '')}"}
+
+
+class PersonAPIViewDetail(RetrieveUpdateDestroyAPIView):
+    serializer_class = PersonSerializer
+    queryset = Person.objects.all()
+    renderer_classes = [JSONRenderer]
