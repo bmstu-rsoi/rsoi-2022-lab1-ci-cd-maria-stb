@@ -24,8 +24,8 @@ env = environ.Env()
 environ.Env.read_env()
 
 SECRET_KEY = 'django-insecure-&c7#mqg^#jfoe0+##syq)^$#%ri^91(bv+96v6b93t_7@vel*e'
-DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://lrfirst.herokuapp.com/']
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 # SECRET_KEY = env('SECRET_KEY')
 # DEBUG = env('DEBUG')
@@ -124,11 +124,8 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
-    # other settings...
-
     'DEFAULT_AUTHENTICATION_CLASSES': [],
     'DEFAULT_PERMISSION_CLASSES': [],
 }
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
